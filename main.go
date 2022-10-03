@@ -9,7 +9,9 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 	"github.com/shirou/gopsutil/v3/net"
 	"log"
+	"math"
 	"os"
+	"strconv"
 )
 
 func main() {
@@ -33,10 +35,13 @@ func main() {
 			return
 		}
 
+		sliceFreeMemory := strconv.Itoa(int(memory.Free))
+		sliceTotalMemory := strconv.Itoa(int(memory.Total))
+
 		fmt.Println(messages.HeaderMemoryMessage)
 		fmt.Println(fmt.Sprintf("Used: %v%s", memory.UsedPercent, "%"))
-		fmt.Println(fmt.Sprintf("Free: %v%s", memory.Free, " ?DEFINE"))  //CHANGE DEFINE
-		fmt.Println(fmt.Sprintf("Total: %v%s", memory.Total, "?DEFINE")) //CHANGE DEFINE
+		fmt.Println(fmt.Sprintf("Free: %v%s", sliceFreeMemory[:2], "% (Fix soon)"))                                //CHANGE DEFINE
+		fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalMemory[:2], "Go (Fix soon) (Take the number and do -1)")) //CHANGE DEFINE
 		fmt.Println(messages.BottomMemoryMessage)
 		return
 	}
@@ -54,7 +59,7 @@ func main() {
 			fmt.Println("Model:", v.ModelName)
 			fmt.Println("Cores:", v.Cores)
 			fmt.Println("CacheSize:", v.CacheSize)
-			fmt.Println("Mhz:", v.Mhz)
+			fmt.Println(fmt.Sprintf("Frequency: %v%s", v.Mhz, "Mhz"))
 			fmt.Println(messages.BottomCPUMessage)
 		}
 		return
@@ -87,7 +92,7 @@ func main() {
 	}
 
 	if args[1] == "disk" && len(args) <= 2 {
-		fmt.Println(messages.SelectHardDrive)
+		fmt.Print(messages.SelectHardDrive)
 		var selectedHardDrive string
 		fmt.Scanln(&selectedHardDrive)
 
@@ -95,11 +100,21 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		sliceFreeSpace := strconv.Itoa(int(diskInfo.Free))
+		sliceTotalSpace := strconv.Itoa(int(diskInfo.Total))
 
 		fmt.Println(messages.HeaderDiskMessage)
-		fmt.Println(fmt.Sprintf("Used: %v%s", diskInfo.UsedPercent, "%"))
-		fmt.Println(fmt.Sprintf("Free: %v%s", diskInfo.Free, " ?DEFINE"))   //CHANGE DEFINE
-		fmt.Println(fmt.Sprintf("Total: %v%s", diskInfo.Total, " ?DEFINE")) //CHANGE DEFINE
+		fmt.Println(fmt.Sprintf("Used: %v%s", math.Round(diskInfo.UsedPercent), "%"))
+		fmt.Println(fmt.Sprintf("Free: %v%s", sliceFreeSpace[:2], "%"))
+
+		if diskInfo.Total > 1000000000000 {
+			fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalSpace[:4], "Gb"))
+			fmt.Println(messages.BottomDiskMessage)
+			return
+		}
+
+		fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalSpace[:3], "Gb"))
+		fmt.Println(messages.BottomDiskMessage)
 		return
 	}
 
