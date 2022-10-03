@@ -39,9 +39,9 @@ func main() {
 		sliceTotalMemory := strconv.Itoa(int(memory.Total))
 
 		fmt.Println(messages.HeaderMemoryMessage)
-		fmt.Println(fmt.Sprintf("Used: %v%s", memory.UsedPercent, "%"))
-		fmt.Println(fmt.Sprintf("Free: %v%s", sliceFreeMemory[:2], "% (Fix soon)"))                                //CHANGE DEFINE
-		fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalMemory[:2], "Go (Fix soon) (Take the number and do -1)")) //CHANGE DEFINE
+		fmt.Println(fmt.Sprintf("Used: %v%%", memory.UsedPercent))
+		fmt.Println(fmt.Sprintf("Free: %v%% (Fix soon)", sliceFreeMemory[:2]))
+		fmt.Println(fmt.Sprintf("Total: %vGo (Fix soon) (Take the number and do -1)", sliceTotalMemory[:2]))
 		fmt.Println(messages.BottomMemoryMessage)
 		return
 	}
@@ -59,7 +59,7 @@ func main() {
 			fmt.Println("Model:", v.ModelName)
 			fmt.Println("Cores:", v.Cores)
 			fmt.Println("CacheSize:", v.CacheSize)
-			fmt.Println(fmt.Sprintf("Frequency: %v%s", v.Mhz, "Mhz"))
+			fmt.Println(fmt.Sprintf("Frequency: %vMhz", v.Mhz))
 			fmt.Println(messages.BottomCPUMessage)
 		}
 		return
@@ -104,16 +104,16 @@ func main() {
 		sliceTotalSpace := strconv.Itoa(int(diskInfo.Total))
 
 		fmt.Println(messages.HeaderDiskMessage)
-		fmt.Println(fmt.Sprintf("Used: %v%s", math.Round(diskInfo.UsedPercent), "%"))
-		fmt.Println(fmt.Sprintf("Free: %v%s", sliceFreeSpace[:2], "%"))
+		fmt.Println(fmt.Sprintf("Used: %v%%", math.Round(diskInfo.UsedPercent)))
+		fmt.Println(fmt.Sprintf("Free: %v%%", sliceFreeSpace[:2]))
 
 		if diskInfo.Total > 1000000000000 {
-			fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalSpace[:4], "Gb"))
+			fmt.Println(fmt.Sprintf("Total: %v%Gb", sliceTotalSpace[:4]))
 			fmt.Println(messages.BottomDiskMessage)
 			return
 		}
 
-		fmt.Println(fmt.Sprintf("Total: %v%s", sliceTotalSpace[:3], "Gb"))
+		fmt.Println(fmt.Sprintf("Total: %vGb", sliceTotalSpace[:3]))
 		fmt.Println(messages.BottomDiskMessage)
 		return
 	}
