@@ -108,7 +108,7 @@ func main() {
 		fmt.Println(fmt.Sprintf("Free: %v%%", sliceFreeSpace[:2]))
 
 		if diskInfo.Total > 1000000000000 {
-			fmt.Println(fmt.Sprintf("Total: %v%Gb", sliceTotalSpace[:4]))
+			fmt.Println(fmt.Sprintf("Total: %vGb", sliceTotalSpace[:4]))
 			fmt.Println(messages.BottomDiskMessage)
 			return
 		}
