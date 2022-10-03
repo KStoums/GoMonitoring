@@ -7,6 +7,7 @@ var CommandTwo = "» memory (See the % of use of its memory)"
 var CommandThree = "» cpu (See information about its processor)"
 var CommandFour = "» host (See information about your host)"
 var CommandFive = "» net (See your information about your network)"
+var CommandSix = "» disk (View information about your hard drive)"
 var BottomHelpMessage = "<------------------------------------->"
 
 // Memory Messages
