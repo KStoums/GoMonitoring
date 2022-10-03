@@ -22,5 +22,10 @@ var HeaderHostMessage = "<----------> Host <---------->"
 var BottomHostMessage = "<---------------------------->"
 
 // Net Messages
-var HeaderNetMessage = "<----------> Net <---------->"
-var BottomNetMessage = "<---------------------------->"
+var HeaderNetMessage = "<----------> Network <---------->"
+var BottomNetMessage = "<------------------------------->"
+
+// Disk Messages
+var SelectHardDrive = "Select your hard drive. (Example C:)"
+var HeaderDiskMessage = "<----------> Disk <---------->"
+var BottomDiskMessage = "<---------------------------->"
