@@ -27,6 +27,6 @@ var HeaderNetMessage = "<----------> Network <---------->"
 var BottomNetMessage = "<------------------------------->"
 
 // Disk Messages
-var SelectHardDrive = "Select your hard drive. (Example C:) > "
+var SelectHardDrive = "Select your hard drive. (Example C: for Windows and ./ for Linux) > "
 var HeaderDiskMessage = "<----------> Disk <---------->"
 var BottomDiskMessage = "<---------------------------->"
