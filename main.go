@@ -39,5 +39,10 @@ func main() {
 		return
 	}
 
+	if args[1] == "gpu" && len(args) <= 2 {
+		commands.GPUCommand()
+		return
+	}
+
 	fmt.Println("Error: Type 'help' for view all commands.")
 }
