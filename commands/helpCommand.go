@@ -13,5 +13,6 @@ func HelpCommand() {
 	fmt.Println(messages.CommandFour)
 	fmt.Println(messages.CommandFive)
 	fmt.Println(messages.CommandSix)
+	fmt.Println(messages.CommandSeven)
 	fmt.Println(messages.BottomHelpMessage)
 }

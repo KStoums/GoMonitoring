@@ -1,7 +1,12 @@
 package commands
 
-import "fmt"
+import (
+	"GoMonitoring/messages"
+	"fmt"
+)
 
 func GPUCommand() {
-	fmt.Println("Coming soon")
+	fmt.Println(messages.HeaderGPUMessage)
+	fmt.Println("» Feature in coming.")
+	fmt.Println(messages.BottomGPUMessage)
 }
