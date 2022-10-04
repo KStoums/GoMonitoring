@@ -20,6 +20,7 @@ func CPUCommand() {
 		fmt.Println("Model:", v.ModelName)
 		fmt.Println("Cores:", v.Cores)
 		fmt.Println("CacheSize:", v.CacheSize)
+		fmt.Println(fmt.Sprintf("Temperature: 0° (COMING SOON)")) //ADD TEMPERATURE
 		fmt.Println(fmt.Sprintf("Frequency: %vMhz", v.Mhz))
 		fmt.Println(messages.BottomCPUMessage)
 		return
