@@ -22,5 +22,6 @@ func CPUCommand() {
 		fmt.Println("CacheSize:", v.CacheSize)
 		fmt.Println(fmt.Sprintf("Frequency: %vMhz", v.Mhz))
 		fmt.Println(messages.BottomCPUMessage)
+		return
 	}
 }
