@@ -7,10 +7,13 @@ import (
 )
 
 func NetCommand() {
-	network := net.ConnectionStat{}
+	network, _ := net.Connections("all")
 
-	//Debug Incoming...
 	fmt.Println(messages.HeaderNetMessage)
-	fmt.Println(fmt.Sprintf("IP: %v", network))
+	for _, value := range network {
+		if value.Raddr.Port != 0 {
+			fmt.Println(fmt.Sprintf("IP: %s:%d   |   Status: %s", value.Raddr.IP, value.Raddr.Port, value.Status))
+		}
+	}
 	fmt.Println(messages.BottomNetMessage)
 }
